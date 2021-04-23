@@ -17,11 +17,11 @@ public class App {
         driver.get(baseURL);            //navegar a la pagina
 
         //lleno campos de formulario
-        sendText("Your Name", "name", "user-submitted-name", "Lucas Ocampo");
-        sendText("Email Address", "xpath", "//*[@id=\"usp_form\"]/div[3]/div[2]/fieldset/input", "l.ocampo@lucasmail.com");
-        sendText("Product Title", "name", "user-submitted-title", "La increible app de Lucas Ocampo");
-        sendText("Product URL", "xpath", "//*[@id=\"usp_form\"]/div[4]/fieldset/input", "http://www.lucasocampo.com");
-        sendText("", "css", ".usp-textarea", "La mejor app que podras encontrar");
+        sendText("Your Name", "name", "user-submitted-name", "Norvil Arce");
+        sendText("Email Address", "css", ".usp-email", "norvil.arce@gmail.com");
+        sendText("Product Title", "name", "user-submitted-title", "La increible app de Norvil Arce");
+        sendText("Product URL", "xpath", "//*[@id=\"usp_form\"]/div[4]/fieldset/input", "http://www.norvilarce.com");
+        sendText("", "css", ".usp-content", "La mejor app que podrás encontrar");
     }
 
     public static void sendText(String label, String selectorType, String selector, String value) {
@@ -29,6 +29,7 @@ public class App {
 
         switch (selectorType) {
             case "css":
+                selector = (!label.equals("")) ? selector+">input" : selector+">textarea";
                 element = driver.findElement(By.cssSelector(selector));
                 break;
             case "name":
